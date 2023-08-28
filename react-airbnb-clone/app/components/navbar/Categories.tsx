@@ -18,8 +18,15 @@ import { IoDiamond } from 'react-icons/io5';
 import { MdOutlineVilla } from 'react-icons/md';
 import CategoryBox from "../CategoryBox";
 import { useSearchParams, usePathname } from 'next/navigation'
+import { IconType } from "react-icons";
 
-export const categories = [
+export interface Category {
+    label: string;
+    icon: IconType;
+    description: string;
+}
+
+export const categories: Category[] = [
     {
         label: 'Beach',
         icon: TbBeach,
