@@ -1,4 +1,4 @@
-import { Listing, User } from '@prisma/client';
+import { Listing, Reservation, User } from '@prisma/client';
 
 export type SafeUser = Omit<
   User,
@@ -15,4 +15,18 @@ export type NewListing = Omit<
 > & {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   location: any;
+};
+
+export type SafeListing = Omit<Listing, 'createdAt'> & {
+  createdAt: string;
+};
+
+export type SafeReservation = Omit<
+  Reservation,
+  'createdAt' | 'startDate' | 'endDate' | 'listing'
+> & {
+  createdAt: string;
+  startDate: string;
+  endDate: string;
+  listing: SafeListing;
 };
